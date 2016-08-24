@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.views.generic import View, ListView
+from django.views.generic import View, ListView, UpdateView, DeleteView
 from django.views.generic.edit import CreateView
 from app.models import Book
 
@@ -60,3 +60,15 @@ class BookCreateView(CreateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super(BookCreateView, self).form_valid(form)
+
+class BookUpdateView(UpdateView):
+    model = Book
+    success_url = '/book/'
+    fields = ['title','author','genre','cost']
+    template_name_suffix = '_update_form'
+
+class BookDeleteView(DeleteView):
+    model = Book
+    success_url = '/book/'
+    template_name = "delete_book.html"
+    fields = ['title', 'author','genre','cost']

@@ -13,7 +13,11 @@ Welcome to the Book listing page:
 <p>Book genre: {{ object.genre }}</p>
 <p>Book Price: ${{ object.cost }}</p>
 <br>
+<a href="{% url 'book_update' object.id %}">Update</a>
+<a href="{% url 'book_delete' object.id %}">Delete</a>
+
 <p>********************</p>
+<br>
 {% ratings object %}
 {% endfor %}
 

@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login, logout
-from app.views import LoginView,LogoutView,user_create_view,IndexView,BookCreateView
+from app.views import LoginView,LogoutView,user_create_view,IndexView,BookCreateView,BookUpdateView,BookDeleteView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,5 +28,7 @@ urlpatterns = [
     url(r'^login/$', login, name="login_view"),
     url(r'^logout/$', logout, name="logout_view"),
     url(r'^book/$',BookCreateView.as_view(), name='book_create_view'),
+    url(r'^book_update/(?P<pk>\d+)$', BookUpdateView.as_view(), name="book_update"),
+    url(r'^book_delete/(?P<pk>\d+)$', BookDeleteView.as_view(), name="book_delete"),
     url(r'^user_create/$', user_create_view, name='user_create_view')
 ]
