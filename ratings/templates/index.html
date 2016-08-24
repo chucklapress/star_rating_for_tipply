@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load ratings %}
+{% block content %}
+<div class="container">
+<br>
+<br>
+Welcome to the Book listing page:
+{% for object in object_list %}
+<p>********************</p>
+<br>
+<p>Book title: {{ object.title }}</p>
+<p>Book author: {{ object.author }}</p>
+<p>Book genre: {{ object.genre }}</p>
+<p>Book Price: ${{ object.cost }}</p>
+<br>
+<p>********************</p>
+{% ratings object %}
+{% endfor %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+<link rel="stylesheet" href='{% static "app/css/bootstrap.css" %}' media="screen" title="bootstrap" charset="utf-8"
+</head>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <br>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="active"><a href="{% url 'index_view' %}">Home</a></li>
+      <li role="presentation"><a href="{% url 'user_create_view'%}">Create user</a></li>
+      <li role="presentation"><a href="{%url 'login'%}">User login</a></li>
+      <li role="presentation"><a href="{%url 'logout_view'%}?next=/">Logout</a></li>
+    </ul>
+
+    </div>
+  </nav>
+    {% block content %}
+
+    {% endblock %}
+  </body>
+</html>
